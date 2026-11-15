@@ -6,8 +6,8 @@ assets={p.stem:'data:image/webp;base64,'+base64.b64encode(p.read_bytes()).decode
 html=html.replace('<link rel="stylesheet" href="style.css">','<style>'+(root/'style.css').read_text()+'</style>')
 for n,data in assets.items():html=html.replace('src="assets/'+n+'.webp"','src="'+data+'"')
 app=(root/'app.js').read_text().replace("cardPhoto=id=>'assets/'+Collection.cards[id].file", "cardPhoto=id=>PHOTO_DATA[Collection.cards[id].file.replace('.webp','')]")
-html=re.sub(r'<script src="(?:engine|levels|gameplay|collection|app)\.js"></script>','',html)
-scripts='const PHOTO_DATA='+json.dumps(assets)+';\n'+(root/'engine.js').read_text()+'\n'+(root/'levels.js').read_text()+'\n'+(root/'gameplay.js').read_text()+'\n'+(root/'collection.js').read_text()+'\n'+app
+html=re.sub(r'<script src="(?:engine|levels|gameplay|collection|savecode|app)\.js"></script>','',html)
+scripts='const PHOTO_DATA='+json.dumps(assets)+';\n'+(root/'engine.js').read_text()+'\n'+(root/'levels.js').read_text()+'\n'+(root/'gameplay.js').read_text()+'\n'+(root/'collection.js').read_text()+'\n'+(root/'savecode.js').read_text()+'\n'+app
 html=html.replace('</body>','<script>'+scripts+'</script></body>')
 out=root/'TXT_Starlight_Offline.html';out.write_text(html)
 assert 'src="assets/' not in html

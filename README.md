@@ -2,6 +2,14 @@
 
 Play: https://tobychito92.github.io/txt-starlight-puzzle/
 
+## v0.5: Save codes
+
+Use **Save code** on the home screen or inside a puzzle. Copy the complete `TXT1.…` code and keep it in Notes; paste it on another device or in the offline version to restore. Codes are snapshots, so export again after further play. Codes are not accounts or automatic cloud sync.
+
+The code includes stage records, unlocked-card progress, equipped photos, language, daily results, the last stage and unfinished boards including notes, hearts and timers. Undo history is not persisted by the existing game. A checksum catches accidental corruption; strict format validation rejects invalid versions, records and placements. The code is not encrypted or a competitive anti-cheat mechanism. No save data leaves the browser when exporting or importing.
+
+Imports require a preview and explicit confirmation before replacing the current save. A local backup under `txt-starlight-before-import-v1` can be previewed and restored from the same menu. If storage fails, the import does not replace the active in-memory progress. Clearing website data also clears this local backup.
+
 ## v0.4
 
 - 120 unique-solution puzzles, all freely selectable from a fresh save. First 60 boards and their save identifiers are unchanged.
@@ -24,7 +32,7 @@ Open the repository root for the GitHub Pages entry, or `/dist/` for the modular
 
 ## Validation
 
-15 automated tests cover 120 unique solutions, connected regions, combat-free puzzle rules, notes and heart persistence, all 120 stage choices from a fresh save, last-stage resume, 40 cards/eight per member, milestone boundaries, no rewards for skipped/replayed stages, existing equipped-photo retention and newly unlocked photo equipment. Physical iOS/Android touch testing has not been performed.
+19 automated tests cover 120 unique solutions, connected regions, combat-free puzzle rules, notes and heart persistence, all 120 stage choices from a fresh save, last-stage resume, 40 cards/eight per member, milestone boundaries, no rewards for skipped/replayed stages, existing equipped-photo retention and newly unlocked photo equipment. Physical iOS/Android touch testing has not been performed.
 
 ## Photo sources
 
