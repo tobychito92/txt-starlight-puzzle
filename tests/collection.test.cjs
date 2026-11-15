@@ -1,0 +1,4 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),C=require('../dist/collection.js');
+test('collection provides 20 distinct photos and four photos per member',()=>{a.equal(C.cards.length,20);a.equal(new Set(C.cards.map(c=>c.file)).size,20);for(let i=0;i<5;i++)a.equal(C.cards.filter(c=>c.member===i).length,4)});
+test('unlocking counts distinct completed stages and retains original five thresholds',()=>{a.equal(C.unlocked({}),0);a.equal(C.unlocked({0:{},1:{},2:{}}),3);a.equal(C.unlocked(Object.fromEntries(Array.from({length:60},(_,i)=>[i,{}]))),20);a.equal(C.unlocked({0:{},bad:{},99:{}}),1);a.equal(C.canEquip(5,{0:{},1:{},2:{},3:{},4:{}}),false)});
+test('equipped selection must match member and unlocked card; defaults remain available',()=>{a.equal(C.choice(0,[6],{0:{},1:{},2:{},3:{},4:{},5:{},6:{}}),0);a.equal(C.choice(0,[5],{0:{}}),0);a.equal(C.choice(0,[5],{0:{},1:{},2:{},3:{},4:{},5:{}}),5);a.equal(C.choice(4,[],{}),4)});
